@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(FrontController::class)->group(function () {
+    Route::get('/', 'index')->name('front.index');
+    Route::get('/menu', 'menu')->name('front.menu');
+    Route::get('/cart', 'cart')->name('front.cart');
 });
-// Route::Get('/contact',function(){
-//     return view('/contact');
-// });
-Route::view('a','/contact');
+
